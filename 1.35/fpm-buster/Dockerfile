@@ -1,4 +1,4 @@
-FROM php:8.0.3-fpm-buster
+FROM php:8.0.5-fpm-buster
 
 ENV MEDIAWIKI_REL REL1_35
 ENV MEDIAWIKI_VERSION 1.35.2
@@ -25,8 +25,9 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIA
     && cd ${MEDIAWIKI_PATH} \
     && git checkout ${MEDIAWIKI_VERSION} \
     && cd ${MEDIAWIKI_PATH}/extensions \
-    && git submodule update --init --recursive \
-    && chown -R www-data: ${MEDIAWIKI_PATH}
+    && git submodule update --init --recursive 
+
+RUN chown -R www-data: ${MEDIAWIKI_PATH}
 
 ADD "./php.ini-production" "$PHP_INI_DIR/php.ini"
 USER www-data
