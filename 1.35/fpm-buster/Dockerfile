@@ -1,5 +1,4 @@
-#!/bin/bash
-FROM arm64v8/php:fpm-buster
+FROM php:fpm-buster
 
 ENV MEDIAWIKI_REL REL1_35
 ENV MEDIAWIKI_VERSION 1.35.2
