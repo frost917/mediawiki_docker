@@ -1,3 +1,4 @@
+#!/bin/bash
 FROM arm64v8/php:fpm-buster
 
 ENV MEDIAWIKI_REL REL1_35
