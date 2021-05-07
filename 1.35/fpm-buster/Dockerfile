@@ -17,7 +17,7 @@ RUN chmod +r /cacert.pem
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions gd mysqli bcmath apcu bz2 intl @composer \ 
-    && RUN pecl install -o -f redis \
+    && pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
 
