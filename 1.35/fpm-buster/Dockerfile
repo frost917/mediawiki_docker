@@ -16,10 +16,7 @@ RUN chmod +r /cacert.pem
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions gd mysqli bcmath apcu bz2 intl @composer \ 
-    && pecl install -o -f redis \
-    &&  rm -rf /tmp/pear \
-    &&  docker-php-ext-enable redis
+    install-php-extensions gd mysqli bcmath apcu bz2 intl redis @composer 
 
 # docker nginx랑 권한 맞추기 위해 
 RUN rm -r ${MEDIAWIKI_PATH} \
@@ -32,6 +29,8 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIA
     && cd ${MEDIAWIKI_PATH} \
     && git checkout ${MEDIAWIKI_VERSION} \
     && cd ${MEDIAWIKI_PATH}/extensions \
-    && git submodule update --init --recursive 
+    && git submodule update --init --recursive
+
+RUN mkdir ${MEDIAWIKI_PATH}/icon ${MEDIAWIKI_PATH}/images ${MEDIAWIKI_PATH}/skins 
 
 CMD ["php-fpm"]
