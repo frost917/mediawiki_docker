@@ -31,6 +31,6 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIA
     && cd ${MEDIAWIKI_PATH}/extensions \
     && git submodule update --init --recursive
 
-RUN mkdir ${MEDIAWIKI_PATH}/icon ${MEDIAWIKI_PATH}/images ${MEDIAWIKI_PATH}/skins 
+RUN mkdir ${MEDIAWIKI_PATH}/icon
 
 CMD ["php-fpm"]
