@@ -19,12 +19,12 @@ RUN git clone https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIA
 
 # add extensions
 RUN cd ${MEDIAWIKI_PATH}/extensions \
-    && git clone https://github.com/jmnote/SimpleMathJax.git \
-    && git clone https://gitlab.com/hydrawiki/extensions/EmbedVideo.git \
-    && git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector.git \
+    && git clone https://github.com/jmnote/SimpleMathJax.git SimpleMathJax \
+    # && git clone https://gitlab.com/hydrawiki/extensions/EmbedVideo.git EmbedVideo \
+    && git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector.git UniversalLanguageSelector \
 # add skins
     && cd ${MEDIAWIKI_PATH}/skins \ 
-    && git clone https://github.com/wikimedia/mediawiki-skins-MinervaNeue.git \
+    && git clone https://github.com/wikimedia/mediawiki-skins-MinervaNeue.git --branch ${MEDIAWIKI_REL} MinervaNeue \
     && cd ${MEDIAWIKI_PATH} \
     && git submodule update --init --recursive
 
