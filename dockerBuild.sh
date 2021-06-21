@@ -1,4 +1,5 @@
-﻿gitDir=`pwd`/mediawiki
+﻿#!/bin/sh
+gitDir=$(dirname $(realpath $0))
 ver="1.36"
 
 #  build
