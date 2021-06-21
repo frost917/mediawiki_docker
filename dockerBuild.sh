@@ -1,5 +1,4 @@
-﻿REGISTER=$REGISTER
-gitDir="/home/frost917/mediawiki"
+﻿gitDir=`pwd`/mediawiki
 ver="1.36"
 
 #  build
