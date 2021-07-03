@@ -7,12 +7,12 @@ cd  ${gitDir}/${ver}/nginx-alpine/
 docker buildx build \
     --push \
     --platform=linux/arm64,linux/amd64 \
-    -t ${REGISTER}/mediawiki:${ver}-nginx-alpine \
+    -t ${REGISTRY}/mediawiki:${ver}-nginx-alpine \
     ./ 
 
 cd ${gitDir}/${ver}/fpm-buster/
 docker buildx build \
     --push \
     --platform=linux/arm64,linux/amd64 \
-    -t ${REGISTER}/mediawiki:${ver}-fpm-buster \
+    -t ${REGISTRY}/mediawiki:${ver}-fpm-buster \
     ./
