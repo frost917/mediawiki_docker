@@ -1,7 +1,7 @@
 FROM alpine/git AS clone
 
 ENV MEDIAWIKI_REL REL1_36
-ENV MEDIAWIKI_VERSION 1.36.0
+ENV MEDIAWIKI_VERSION 1.36.1
 ENV MEDIAWIKI_PATH /var/www/html
 	
 # docker nginx랑 권한 맞추기 위해 
@@ -13,7 +13,8 @@ WORKDIR ${MEDIAWIKI_PATH}
 USER 101
 
 RUN git clone https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIAWIKI_REL} ${MEDIAWIKI_PATH} \
-    && cd ${MEDIAWIKI_PATH}/extensions \
+    && git checkout ${MEDIAWIKI_VERSION} \
+    # && cd ${MEDIAWIKI_PATH}/extensions \
     && git submodule update --init --recursive
 
 RUN mkdir ${MEDIAWIKI_PATH}/icon
