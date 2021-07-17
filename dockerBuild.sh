@@ -7,7 +7,7 @@ specVer="1.36.1"
 cd  ${gitDir}/${ver}/nginx-alpine/
 docker buildx build \
     --push \
-    --platform=linux/arm64,linux/amd64 \
+    --platform=linux/arm64/v8,linux/amd64,linux/arm/v7,linux/arm/v8 \
     -t ${REGISTRY}/mediawiki:${ver}-nginx-alpine \
     -t ${REGISTRY}/mediawiki:${specVer}-nginx-alpine \
     ./ 
@@ -15,7 +15,7 @@ docker buildx build \
 cd ${gitDir}/${ver}/fpm-buster/
 docker buildx build \
     --push \
-    --platform=linux/arm64,linux/amd64 \
+    --platform=linux/arm64/v8,linux/amd64,linux/arm/v7,linux/arm/v8 \
     -t ${REGISTRY}/mediawiki:${ver}-fpm-buster \
     -t ${REGISTRY}/mediawiki:${specVer}-fpm-buster \
     ./
