@@ -12,8 +12,8 @@ WORKDIR ${MEDIAWIKI_PATH}
 
 USER 101
 
-RUN git clone https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIAWIKI_REL} ${MEDIAWIKI_PATH} \
-    && git checkout ${MEDIAWIKI_VERSION} \
+RUN git clone --depth 1 https://gerrit.wikimedia.org/r/mediawiki/core.git --branch ${MEDIAWIKI_REL} ${MEDIAWIKI_PATH} \
+    # && git checkout ${MEDIAWIKI_VERSION} \
     # && cd ${MEDIAWIKI_PATH}/extensions \
     && git submodule update --init --recursive
 
@@ -30,12 +30,11 @@ RUN cd ${MEDIAWIKI_PATH}/extensions \
     && cd ${MEDIAWIKI_PATH} \
     && git submodule update --init --recursive
 
-FROM php:fpm-buster
+FROM php:8-fpm-buster
 
 RUN usermod -u 101 www-data 
 
 RUN apt update \
-    && apt install -y apt-utils \
     && apt install -y --no-install-recommends diffutils python3 imagemagick \
     && rm -rf /var/lib/apt/lists/*
 
