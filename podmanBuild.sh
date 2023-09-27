@@ -9,11 +9,11 @@ imageName="$serviceName"
 imageTag="backend-$mediawikiBackendVer"
 manifestName="$REGISTRY/$imageName:$imageTag"
 
-# flush cache data
-#podman --root $dataRoot rmi --all --force
+# delete image manifest
+podman --root $dataRoot image rm $manifestName
 
 # create image manifest
-podman --root $dataRoot  manifest create $manifestName
+podman --root $dataRoot manifest create $manifestName
 
 # build images
 for arch in amd64 arm64/v8

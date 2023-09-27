@@ -8,9 +8,6 @@ imageName="$serviceName"
 imageTag="source-$mediawikiVer"
 manifestName="$REGISTRY/$imageName:$imageTag"
 
-# flush cache data
-# podman --root $dataRoot rmi --all --force
-
 # delete image manifest
 podman --root $dataRoot image rm $manifestName
 

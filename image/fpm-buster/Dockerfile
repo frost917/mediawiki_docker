@@ -4,7 +4,7 @@
 
 # FROM ${REGISTRY}/mediawiki:source-${MEDIAWIKI_VER} AS source
 
-FROM php:8.1.11-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 ARG MEDIAWIKI_VER=1.38.4
 ARG WIKITYPE=mediawiki
